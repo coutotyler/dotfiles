@@ -27,7 +27,7 @@ set incsearch
 set t_Co=16		"Allow bright colors without bold
 
 " Map leaders
-let mapleader = ";"
+let mapleader = "'"
 let maplocalleader	= ","
 
 " Bindings
