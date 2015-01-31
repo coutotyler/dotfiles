@@ -20,6 +20,8 @@ alias dirs='dirs -v'
 alias trp='tr ":" "\n"'
 alias view='vim -R'
 alias ll='ls -lh --group-directories-first'
+alias du='du -hsc'
+alias df='df -h'
 
 # User specific switches
 set -o vi
