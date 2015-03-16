@@ -10,3 +10,6 @@ pathmunge() {
 	fi
 }
 	
+follow() {
+	tail -f -n 0 $1 | nl 
+}
