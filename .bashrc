@@ -6,6 +6,7 @@ source ~/.bash_functions
 
 # Path
 pathmunge ~/Documents/scripts
+pathmunge /usr/NX/bin after
 
 # User specific environment variables
 export PYTHONSTARTUP=~/.pythonrc.py
