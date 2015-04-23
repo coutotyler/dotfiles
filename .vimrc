@@ -33,6 +33,7 @@ let maplocalleader	= ","
 " Bindings
 nnoremap <leader>ev :vnew $MYVIMRC <cr>
 nnoremap <leader>sv :source $MYVIMRC <cr>
+nnoremap <localleader>w :set wrap! <cr>
 inoremap jk <esc>
 vnoremap jk <esc>
 nnoremap H 0

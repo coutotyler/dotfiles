@@ -21,6 +21,7 @@ alias dirs='dirs -v'
 alias trp='tr ":" "\n"'
 alias view='vim -R'
 alias ll='ls -lh --group-directories-first'
+alias lt='ls -lhrt' 
 alias du='du -hsc'
 alias df='df -h'
 
