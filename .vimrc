@@ -3,8 +3,8 @@ execute pathogen#infect()
 
 " Solarized colors
 syntax enable
-set background=dark
-colorscheme solarized
+"set background=dark
+"colorscheme solarized
 
 " Custom python folding
 source ~/.vim/folding.vim
