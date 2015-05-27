@@ -3,8 +3,8 @@ execute pathogen#infect()
 
 " Solarized colors
 syntax enable
-set background=dark
-colorscheme solarized
+"set background=dark
+"colorscheme solarized
 
 " Custom python folding
 source ~/.vim/folding.vim
@@ -25,6 +25,7 @@ set ignorecase
 set smartcase
 set incsearch
 set t_Co=16		"Allow bright colors without bold
+set hidden		"Allow switching from an unsaved buffer
 
 " Map leaders
 let mapleader = "'"
@@ -50,6 +51,7 @@ nnoremap <leader>l <C-W>l
 nnoremap <leader>h <C-W>h
 nnoremap Y y$
 nnoremap <leader><space> :noh<cr>
+nnoremap <leader>s :windo set scrollbind!<cr>
 
 " Filetype specific things
 :autocmd FileType python nnoremap <buffer><localleader>c  I#@ <esc>
