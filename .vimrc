@@ -33,6 +33,7 @@ let maplocalleader	= ","
 
 " Bindings
 nnoremap <leader>ev :vnew $MYVIMRC <cr>
+nnoremap <leader>hv :new $MYVIMRC <cr>
 nnoremap <leader>sv :source $MYVIMRC <cr>
 nnoremap <localleader>w :set wrap! <cr>
 inoremap jk <esc>
@@ -52,6 +53,8 @@ nnoremap <leader>h <C-W>h
 nnoremap Y y$
 nnoremap <leader><space> :noh<cr>
 nnoremap <leader>s :windo set scrollbind!<cr>
+nnoremap <Up> <C-W>+
+nnoremap <Down> <C-W>-
 
 " Filetype specific things
 :autocmd FileType python nnoremap <buffer><localleader>c  I#@ <esc>
@@ -62,22 +65,11 @@ nnoremap <leader>s :windo set scrollbind!<cr>
 :autocmd FileType sh nnoremap <buffer><localleader>C 0x<esc>
 :autocmd FileType txt :set tw 80
 :autocmd FileType txt :set formatoptions+=t
-" I want something like this.
-" 	Should be smart enough to know whether I should change height or width.
-"		Should continue resizing if I hold the keys
-nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
-nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 
-"Disable old keys
-"inoremap <esc> <nop>
-"inoremap <right> <nop>
-"inoremap <left> <nop>
-"inoremap <up> <nop>
-"inoremap <down> <nop>
-"nnoremap <right> <nop>
-"nnoremap <left> <nop>
-"nnoremap <up> <nop>
-"nnoremap <down> <nop>
+" Vimdiff colorscheme
+if &diff
+	colorscheme vimdiff
+endif
 
 " Not often used
 "
@@ -91,12 +83,3 @@ nnoremap _ ddkP
 " Make word upper case
 inoremap <c-u> <esc>viwUi
 nnoremap <c-u> viwU
-"
-" Edit vimrc in horizontal split
-nnoremap <leader>evh :new $MYVIMRC <cr>
-"
-" Resize splits
-"nnoremap <leader>+ :resize +5<enter>
-"nnoremap <leader>- :resize -5<enter>
-nnoremap <leader>> :vertical resize +5<enter>
-nnoremap <leader>< :vertical resize -5<enter>
