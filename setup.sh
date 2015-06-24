@@ -9,4 +9,5 @@ ln -s ~/Documents/gitRepos/dotfiles/.vim ~/.vim
 ln -s ~/Documents/gitRepos/dotfiles/.vimrc ~/.vimrc
 ln -s ~/Documents/gitRepos/dotfiles/.tmux.conf ~/.tmux.conf
 ln -s ~/Documents/gitRepos/dotfiles/.pythonrc.py ~/.pythonrc.py
-
+ln -s ~/Documents/gitRepos/dotfiles/.Xresources ~/.Xresources
+ln -s ~/Documents/gitRepos/dotfiles/.Xresources.d ~/.Xresources.d
