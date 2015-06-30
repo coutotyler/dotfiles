@@ -1,8 +1,11 @@
 # Source default file
-source ~/.bash_default
+[ -e ~/.bash_default ] && source ~/.bash_default
 
 # Get functions
-source ~/.bash_functions
+[ -e ~/.bash_functions ] && source ~/.bash_functions
+
+# Set up xterm
+xrdb ~/.Xresources
 
 # Path
 pathmunge ~/Documents/scripts
