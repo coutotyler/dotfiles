@@ -1,0 +1,16 @@
+! Use a nice truetype font and size by default
+xterm*faceName: DejaVu Sans Mono Book
+xterm*faceSize: 11
+
+! Set scrollback
+xterm*savelines: 16384
+
+! Double-click to select whole URLs
+xterm*charClass: 33:48,36-47:48,58-59:48,61:48,63-64:48,95:48,126:48
+
+! Use 256 colors
+xterm*termName: xterm-256color
+
+! Set colorscheme
+#define SOLARIZED_DARK
+#include "/home/tyler/.Xresources.d/solarized-colors"
