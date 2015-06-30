@@ -1,5 +1,5 @@
 ! Use a nice truetype font and size by default
-xterm*faceName: DejaVu Sans Mono Book
+xterm*faceName: DejaVu Sans Mono for Powerline
 xterm*faceSize: 11
 
 ! Set scrollback
