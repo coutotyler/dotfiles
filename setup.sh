@@ -48,13 +48,12 @@ done
 	&& ln -fs $repo/.Xresources.d ~/.Xresources.d \
 	|| echo ".Xresources.d already exists"
 
-## Setup Powerline for tmux
-##
-#if pip is installed; then 
-#	sudo pip powerline-status install
-#fi
-## Get patched fonts for Powerline
-#git clone git@github.com:powerline/fonts.git to $repo
-#sudo cp "$repo/DejaVuSansMono/DejaVu\ Sans\ Mono\ for\ Powerline.ttf" /usr/share/fonts/X11/
-#sudo fc-cache -f /usr/share/fonts/X11
-#echo "System must reboot for changes to take effect." 
+# Setup Powerline for tmux
+#
+[ -e `which pip` ] || sudo pip powerline-status install 
+
+# Get patched fonts for Powerline
+git clone git@github.com:powerline/fonts.git ${repo%/*}/
+sudo cp "${repo%/*}/DejaVuSansMono/DejaVu\ Sans\ Mono\ for\ Powerline.ttf" /usr/share/fonts/X11/
+sudo fc-cache -f /usr/share/fonts/X11
+echo "System must reboot for changes to take effect." 
