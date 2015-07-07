@@ -53,7 +53,10 @@ done
 [ -e `which pip` ] || sudo pip powerline-status install 
 
 # Get patched fonts for Powerline
-git clone git@github.com:powerline/fonts.git ${repo%/*}/
-sudo cp "${repo%/*}/DejaVuSansMono/DejaVu\ Sans\ Mono\ for\ Powerline.ttf" /usr/share/fonts/X11/
+[ -e ${repo%/*}/fonts ] \
+	|| git clone git@github.com:powerline/fonts.git ${repo%/*}/fonts
+[ -e "${repo%/*}/fonts/DejaVuSansMono/DejaVu Sans Mono for Powerline.ttf" ] \
+	&& sudo cp "${repo%/*}/fonts/DejaVuSansMono/DejaVu Sans Mono for Powerline.ttf" /usr/share/fonts/X11/ \
+	|| { echo "Can't find Deja Vu fonts for powerline"; exit; }
 sudo fc-cache -f /usr/share/fonts/X11
 echo "System must reboot for changes to take effect." 
