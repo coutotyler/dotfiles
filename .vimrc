@@ -63,6 +63,7 @@ nnoremap <Down> <C-W>-
 :autocmd FileType python :set foldcolumn=1
 :autocmd FileType sh nnoremap <buffer><localleader>c I#<esc>
 :autocmd FileType sh nnoremap <buffer><localleader>C 0x<esc>
+:autocmd BufNewFile *.sh 0r ~/.vim/skeletons/skeleton.sh
 :autocmd FileType txt :set tw 80
 :autocmd FileType txt :set formatoptions+=t
 
