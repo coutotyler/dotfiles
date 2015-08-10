@@ -17,9 +17,6 @@ while [[ $# > 0 ]] ; do
 done
 
 # Set up dotfiles for a new computer
-[ ! -e ~/.bash_default -o "$force" == "True" ] \
-	&& mv ~/.bashrc ~/.bash_default \
-	|| echo ".bash_default already exists"
 [ ! -e ~/.bashrc -o "$force" == "True" ] \
 	&& ln -fs $repo/.bashrc ~/.bashrc \
 	|| echo ".bashrc already exists"

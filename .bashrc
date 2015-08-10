@@ -27,6 +27,7 @@ alias ll='ls -lhH --group-directories-first'
 alias lt='ls -lhrt' 
 alias du='du -hsc'
 alias df='df -h'
+alias firefox='firefox > /dev/null 2>&1'
 
 # User specific switches
 set -o vi

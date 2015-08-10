@@ -25,4 +25,7 @@ while [[ $# > 0 ]]; do
 	esac
 	shift
 done
-main
+
+if [ $0 != "-bash" ]; then
+ main
+fi
