@@ -29,6 +29,7 @@ alias lt='ls -lhrt'
 alias la='ll -A'
 alias du='du -hsc'
 alias df='df -h'
+alias firefox='firefox > /dev/null 2>&1'
 
 # Switches
 set -o vi
