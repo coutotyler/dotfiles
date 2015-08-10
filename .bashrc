@@ -1,22 +1,23 @@
 # Source default file
-[ -e ~/.bash_default ] && source ~/.bash_default
+[ -e /etc/skel/.bashrc ] && source /etc/skel/.bashrc
 
 # Get functions
 [ -e ~/.bash_functions ] && source ~/.bash_functions
 
 # Set up xterm
 xrdb ~/.Xresources
+[ -e ~/.dir_colors ] && eval `dircolors ~/.dir_colors`
 
 # Path
 pathmunge ~/Documents/scripts
 pathmunge /usr/NX/bin after
 
-# User specific environment variables
+# Environment variables
 export PYTHONSTARTUP=~/.pythonrc.py
 export HISTTIMEFORMAT=" [%F] [%T] "
 export EDITOR=/usr/bin/vim
 
-# User specific aliases
+# Aliases
 alias ps='ps -H'
 alias grep='grep --color=auto'
 alias more='more -d'
@@ -29,5 +30,5 @@ alias la='ll -A'
 alias du='du -hsc'
 alias df='df -h'
 
-# User specific switches
+# Switches
 set -o vi
