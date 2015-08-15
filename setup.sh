@@ -25,6 +25,10 @@ while [[ $# > 0 ]] ; do
 	shift
 done
 
+if [ $0 != "-bash" ]; then
+ main
+fi
+
 # Set up dotfiles
 link_dotfiles() {
 	[ ! -e ~/.bashrc -o "$force" == "True" ] \
@@ -91,5 +95,5 @@ install_dircolors() {
 
 install_pathogen(){
 	git clone https://github.com/tpope/vim-pathogen.git $repoDir/vim-pathogen
-	ln -s $repoDir/vim-pathogen/autoload/pathogen.vim ~/.vim/autoload/pathogen.vim
+	ln -s $repoDir/vim-pathogen/autoload/pathogen.vim ~/.vim/autoload/pathogen.vim 
 }
