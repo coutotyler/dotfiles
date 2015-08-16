@@ -12,23 +12,6 @@ main() {
 	install_pathogen
 }
 
-# Parse options
-while [[ $# > 0 ]] ; do
-	arg="$1"
-	case $arg in
-		-f|--force)
-			force=True
-			;;
-		*)
-			;;
-	esac
-	shift
-done
-
-if [ $0 != "-bash" ]; then
- main
-fi
-
 # Set up dotfiles
 link_dotfiles() {
 	[ ! -e ~/.bashrc -o "$force" == "True" ] \
@@ -63,37 +46,65 @@ link_dotfiles() {
 install_pip() {
 	if [ !`which pip` ]; then 
 		if [ ! -e ~/Downloads/get-pip.py ]; then
-			[ `wget -O ~/Downloads/get-pip.py https://bootstrap.pypa.io/get-pip.py` ] \
+			[ -e ~/Downloads ] || mkdir ~/Downloads 
+			wget -O ~/Downloads/get-pip.py https://bootstrap.pypa.io/get-pip.py \
 				|| { echo "Trouble downloading get-pip.py"; exit; }
 		fi
-		[ `sudo python ~/Downloads/get-pip.py` ] || echo "Trouble installing pip"
+		sudo python ~/Downloads/get-pip.py || echo "Trouble installing pip"
 	fi
 }
 
 install_powerline() {
-	[ `which pip` ] && sudo pip powerline-status install 
+	which pip > /dev/null || { echo "Can't find pip"; exit; }
+	which powerline > /dev/null || sudo pip install powerline-status
 
 	# Get patched fonts for Powerline
-	[ -e $repoDir/fonts ] \
+	[ -d $repoDir/fonts ] \
 		|| git clone git@github.com:powerline/fonts.git $repoDir/fonts
 	[ -e "$repoDir/fonts/DejaVuSansMono/DejaVu Sans Mono for Powerline.ttf" ] \
 		&& sudo cp "$repoDir/fonts/DejaVuSansMono/DejaVu Sans Mono for Powerline.ttf" /usr/share/fonts/X11/ \
 		|| { echo "Can't find Deja Vu fonts for powerline"; exit; }
-	sudo fc-cache -f /usr/share/fonts/X11
-	echo "System must reboot for changes to take effect." 
+	if [ ! -d /user/share/fonts/X11 ]; then  
+		sudo mkdir -p /usr/share/fonts/X11
+		sudo fc-cache -f /usr/share/fonts/X11
+		echo "System must reboot for changes to take effect." 
+	fi
 }
 	
 install_syntastic() {
-	git clone https://github.com/scrooloose/syntastic.git $repoDir/syntastic
-	ln -s $repoDir/synstastic ~/.vim/bundle/syntastic
+	[ -d $repoDir/syntastic ] \
+		|| git clone https://github.com/scrooloose/syntastic.git $repoDir/syntastic
+	[ -h ~/.vim/bundle/syntastic ] \
+		|| ln -s $repoDir/synstastic ~/.vim/bundle/syntastic
 }
 
 install_dircolors() { 
-	git clone https://github.com/seebi/dircolors-solarized.git
-	ln -s $repoDir/dircolors-solarized/dircolors.256dark ~/.dir_colors
+	[ -d $repoDir/dircolors-solarized ] \
+		|| git clone https://github.com/seebi/dircolors-solarized.git $repoDir/dircolors-solarized
+	[ -h ~/.dir_colors ] \
+		|| ln -s $repoDir/dircolors-solarized/dircolors.256dark ~/.dir_colors
 }
 
 install_pathogen(){
-	git clone https://github.com/tpope/vim-pathogen.git $repoDir/vim-pathogen
-	ln -s $repoDir/vim-pathogen/autoload/pathogen.vim ~/.vim/autoload/pathogen.vim 
+	[ -d $repoDir/vim-pathogen ] \
+		|| git clone https://github.com/tpope/vim-pathogen.git $repoDir/vim-pathogen
+	[ -h ~/.vim/autoload/pathogen.vim ] \
+		|| ln -s $repoDir/vim-pathogen/autoload/pathogen.vim ~/.vim/autoload/pathogen.vim 
 }
+
+# Parse options
+while [[ $# > 0 ]] ; do
+	arg="$1"
+	case $arg in
+		-f|--force)
+			force=True
+			;;
+		*)
+			;;
+	esac
+	shift
+done
+
+if [ $0 != "-bash" ]; then
+ main
+fi
