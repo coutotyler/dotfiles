@@ -10,6 +10,7 @@ main() {
 	install_syntastic
 	install_dircolors
 	install_pathogen
+	install_scripts
 }
 
 # Set up dotfiles
@@ -90,6 +91,12 @@ install_pathogen(){
 		|| git clone https://github.com/tpope/vim-pathogen.git $repoDir/vim-pathogen
 	[ -h ~/.vim/autoload/pathogen.vim ] \
 		|| ln -s $repoDir/vim-pathogen/autoload/pathogen.vim ~/.vim/autoload/pathogen.vim 
+}
+
+install_scripts(){
+	[ -d $repoDir/scripts ] \
+		|| git clone https://github.com/coutotyler/scripts.git $repoDir/scripts
+	$repoDir/scripts/setup.sh
 }
 
 # Parse options
