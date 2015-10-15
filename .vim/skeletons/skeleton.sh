@@ -13,7 +13,7 @@ main() {
 
 while [[ $# > 0 ]]; do
 	arg="$1"
-	case arg in
+	case $arg in
 		-h|--help)
 			show_help
 			exit
