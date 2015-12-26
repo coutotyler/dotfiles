@@ -30,6 +30,7 @@ alias la='ll -A'
 alias du='du -hsc'
 alias df='df -h'
 alias firefox='firefox > /dev/null 2>&1'
+alias dater='date -u +%Y-%m-%d_%H-%M-%S'
 
 # Switches
 set -o vi
