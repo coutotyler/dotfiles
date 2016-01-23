@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/Users/tcouto/Documents/gitRepos/openstack-automation/pillar_root'
+let g:netrw_dirhist_2='/Users/tcouto/Documents/vagrant/openstack-ceph'
+let g:netrw_dirhist_3='/Users/tcouto/Documents/svn/ops/ansible/roles/common/files/dotfiles'
+let g:netrw_dirhist_4='/Users/tcouto/Documents/scratch/pciFiles'
+let g:netrw_dirhist_5='/Users/tcouto/Documents/salt/certain/file_root'
+let g:netrw_dirhist_6='/Users/tcouto/Documents/svn/ops/Environment/SavvisNJ/monitoring/nagios/etc'
+let g:netrw_dirhist_7='/Users/tcouto/Documents/svn/ops/Environment/SavvisNJ/monitoring/nagios/etc/objects'
+let g:netrw_dirhist_8='/Users/tcouto/Documents/scripts'
+let g:netrw_dirhist_9='/Users/tcouto/Documents'

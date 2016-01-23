@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Define repo directory
-repoDir="/home/tyler/Documents/gitRepos"
+#repoDir="/home/tyler/Documents/gitRepos"
+repoDir="/Users/tcouto/Documents/gitRepos"
 
 main() {
 	link_dotfiles
@@ -61,15 +62,15 @@ install_powerline() {
 
 	# Get patched fonts for Powerline
 	[ -d $repoDir/fonts ] \
-		|| git clone git@github.com:powerline/fonts.git $repoDir/fonts
-	[ -e "$repoDir/fonts/DejaVuSansMono/DejaVu Sans Mono for Powerline.ttf" ] \
-		&& sudo cp "$repoDir/fonts/DejaVuSansMono/DejaVu Sans Mono for Powerline.ttf" /usr/share/fonts/X11/ \
-		|| { echo "Can't find Deja Vu fonts for powerline"; exit; }
+		|| git clone https://github.com/powerline/fonts.git $repoDir/fonts
 	if [ ! -d /user/share/fonts/X11 ]; then  
 		sudo mkdir -p /usr/share/fonts/X11
 		sudo fc-cache -f /usr/share/fonts/X11
 		echo "System must reboot for changes to take effect." 
 	fi
+	[ -e "$repoDir/fonts/DejaVuSansMono/DejaVu Sans Mono for Powerline.ttf" ] \
+		&& sudo cp "$repoDir/fonts/DejaVuSansMono/DejaVu Sans Mono for Powerline.ttf" /usr/share/fonts/X11/ \
+		|| { echo "Can't find Deja Vu fonts for powerline"; exit; }
 }
 	
 install_syntastic() {

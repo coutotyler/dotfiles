@@ -1,1 +1,1 @@
-/home/tyler/Documents/gitRepos/vim-pathogen/autoload/pathogen.vim
+/Users/tcouto/Documents/gitRepos/vim-pathogen/autoload/pathogen.vim

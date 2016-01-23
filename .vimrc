@@ -26,6 +26,8 @@ set smartcase
 set incsearch
 set t_Co=16		"Allow bright colors without bold
 set hidden		"Allow switching from an unsaved buffer
+set nocompatible
+filetype plugin indent on	"Salt syntax plugin requires this
 
 " Map leaders
 let mapleader = "'"
@@ -38,14 +40,10 @@ nnoremap <leader>sv :source $MYVIMRC <cr>
 nnoremap <localleader>w :set wrap! <cr>
 inoremap jk <esc>
 vnoremap jk <esc>
-nnoremap H 0
 nnoremap J L
 nnoremap K H
-nnoremap L $
-vnoremap H 0
 vnoremap J L
 vnoremap K H
-vnoremap L $
 nnoremap <leader>k <C-W>k
 nnoremap <leader>j <C-W>j
 nnoremap <leader>l <C-W>l
@@ -82,5 +80,5 @@ nnoremap - ddp
 nnoremap _ ddkP
 "
 " Make word upper case
-inoremap <c-u> <esc>viwUi
-nnoremap <c-u> viwU
+"inoremap <c-u> <esc>viwUi
+"nnoremap <c-u> viwU
