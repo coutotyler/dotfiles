@@ -3,8 +3,8 @@ execute pathogen#infect()
 
 " Solarized colors
 syntax enable
-"set background=dark
-"colorscheme solarized
+set background=dark
+colorscheme solarized
 
 " Custom python folding
 source ~/.vim/folding.vim
@@ -27,6 +27,8 @@ set incsearch
 set t_Co=16		"Allow bright colors without bold
 set hidden		"Allow switching from an unsaved buffer
 set nocompatible
+set foldcolumn=1
+set debug=msg
 filetype plugin indent on	"Salt syntax plugin requires this
 
 " Map leaders
@@ -58,7 +60,9 @@ nnoremap <Down> <C-W>-
 :autocmd FileType python nnoremap <buffer><localleader>c  I#@ <esc>
 :autocmd FileType python :set foldmethod=expr
 :autocmd FileType python :set foldexpr=GetPythonFold(v:lnum)
-:autocmd FileType python :set foldcolumn=1
+:autocmd BufRead,BufNewFile azuredeploy.json :set foldmethod=expr
+:autocmd BufRead,BufNewFile azuredeploy.json :set foldexpr=GetARMFold(v:lnum)
+:autocmd BufRead,BufNewFile azuredeploy.json :set foldtext=ARMFoldText()
 :autocmd FileType sh nnoremap <buffer><localleader>c I#<esc>
 :autocmd FileType sh nnoremap <buffer><localleader>C 0x<esc>
 :autocmd BufNewFile *.sh 0r ~/.vim/skeletons/skeleton.sh
