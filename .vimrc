@@ -6,11 +6,11 @@ syntax enable
 set background=dark
 colorscheme solarized
 
-" Custom python folding
-source ~/.vim/folding.vim
-
-" To recognize filetypes? 
+" To recognize filetypes
 :filetype on
+
+" Syntastic Checkers
+"let g:syntastic_json_checkers=['jsonlint']
 
 " My preferred settings
 set nowrap 
@@ -29,7 +29,6 @@ set hidden		"Allow switching from an unsaved buffer
 set nocompatible
 set foldcolumn=1
 set debug=msg
-filetype plugin indent on	"Salt syntax plugin requires this
 
 " Map leaders
 let mapleader = "'"
@@ -57,17 +56,17 @@ nnoremap <Up> <C-W>+
 nnoremap <Down> <C-W>-
 
 " Filetype specific things
-:autocmd FileType python nnoremap <buffer><localleader>c  I#@ <esc>
-:autocmd FileType python :set foldmethod=expr
-:autocmd FileType python :set foldexpr=GetPythonFold(v:lnum)
-:autocmd BufRead,BufNewFile azuredeploy.json :set foldmethod=expr
-:autocmd BufRead,BufNewFile azuredeploy.json :set foldexpr=GetARMFold(v:lnum)
-:autocmd BufRead,BufNewFile azuredeploy.json :set foldtext=ARMFoldText()
+:autocmd FileType python source ~/.vim/folding/python.vim
+":autocmd FileType c source ~/.vim/folding/c.vim
+:autocmd BufRead,BufNewFile azuredeploy.json source ~/.vim/folding/ARM.vim
+:autocmd BufRead,BufNewFile *.cf source ~/.vim/folding/cloudFormation.vim
+:autocmd BufRead,BufNewFile *.profiles.conf source ~/.vim/folding/saltCloud.vim
 :autocmd FileType sh nnoremap <buffer><localleader>c I#<esc>
 :autocmd FileType sh nnoremap <buffer><localleader>C 0x<esc>
 :autocmd BufNewFile *.sh 0r ~/.vim/skeletons/skeleton.sh
 :autocmd FileType txt :set tw 80
 :autocmd FileType txt :set formatoptions+=t
+:autocmd FileType sls filetype plugin indent on	
 
 " Vimdiff colorscheme
 if &diff
